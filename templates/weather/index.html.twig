@@ -6,15 +6,17 @@
 
 {% block body %}
 <div class="container">
-    <div class="blockMain">
+
+    <!-- <div>
         <a href="https://strategia.io/"><img src="{{ asset('image/origami.png') }}" alt=""></a>
-        
         <h1>Strategia Météo</h1>
-    </div>
-    <div class="forms form-group has-success justify-content-lg-center d-flex align-items-center  p-4 p-md-2">
+    </div> -->
+
+    <div class="forms form-group has-success justify-content-lg-center d-flex align-items-center  p-4 p-md-2 blockMain">
         <form action={{ path('weather')}} method=post class="row">
             <input class="form-control is-valid col-md-6 d-flex justify-content-center" id="search_city" name="search_city"type="search"  placeholder="Votre ville...">
             <button class="btn btn-primary" type=submit >Rechercher</button>
+        </form>
             <div class="card mb-3">
                     <h3 class="card-header">Détail météorologique</h3>
                     <div class="card-body">
@@ -22,11 +24,11 @@
                       <h6 class="card-subtitle text-muted">{{ api.main.temp }}°</h6>
                       <h6>{{  api.weather[0].description  }}</h6>
                     </div>
-                    {% if api.main.temp > 25 %}
+                    <!-- {% if api.main.temp > 25 %}
                     <img class="imgs" src="{{ asset('image/sun.jpg') }}" alt="">
                     {% else %}
                     <img class="imgs" src="{{ asset('image/cloud.jpg') }}" alt="">
-                {% endif %}
+                    {% endif %} -->
                     <div class="card-body">
                       <p class="card-text">Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de {{ api.main.temp_min }}° et la température maximal sera de {{ api.main.temp_max }}°</p>
                     </div>
@@ -36,7 +38,6 @@
                       <li class="list-group-item">Vitess du vent : {{ api.wind.speed }} Km/h</li>
                     </ul>
                   </div>
-        </form>
     </div>
 
     
