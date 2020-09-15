@@ -1,0 +1,42 @@
+.forms
+{
+    margin-top: 2%;
+}
+
+.imgs
+{
+    margin-left: 200px;
+    width: 200px;
+    height: 200px;
+    border-radius: 3%;
+    box-shadow: 5px 5px 5px #26b19e;
+}
+
+.blockMain
+{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* 
+p
+{
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+  
+@keyframes slidein 
+{
+    from
+    {
+      margin-left: 100%;
+      width: 300%; 
+    }
+  
+    to
+    {
+      margin-left: 0%;
+      width: 100%;
+    }
+} */
