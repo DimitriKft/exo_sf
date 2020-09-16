@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
 
+
 class WeatherController extends AbstractController
 {
     private $wheatherService;
@@ -25,13 +26,24 @@ class WeatherController extends AbstractController
      */
     public function index(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
-        // $api   = $weather->getWeather();
         $api = $weather->getApi( $request);
-
         return $this->render('weather/index.html.twig',[ 
             'api' => $api,
         ]);
     }
+
+        /**
+     * @Route("/error", name="weathErerror")
+     */
+    public function error(WeatherService $weather, Request $request, DecoderInterface $decode)
+    {
+        $api = $weather->getApi( $request);
+        return $this->render('weather/error.html.twig',[ 
+            'api' => 'test'
+        ]);
+    }
+
+    
    
     
 }

@@ -24,11 +24,11 @@
                       <h6 class="card-subtitle text-muted">{{ api.main.temp }}°</h6>
                       <h6>{{  api.weather[0].description  }}</h6>
                     </div>
-                    <!-- {% if api.main.temp > 25 %}
+                    {% if api.main.temp > 25 %}
                     <img class="imgs" src="{{ asset('image/sun.jpg') }}" alt="">
                     {% else %}
                     <img class="imgs" src="{{ asset('image/cloud.jpg') }}" alt="">
-                    {% endif %} -->
+                    {% endif %}
                     <div class="card-body">
                       <p class="card-text">Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de {{ api.main.temp_min }}° et la température maximal sera de {{ api.main.temp_max }}°</p>
                     </div>
