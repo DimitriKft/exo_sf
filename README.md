@@ -1,72 +1,44 @@
-# exo-sf
+# Portfolio Symfony
 
-### Objectifs
+Développement d'une application météo avec appel api.
 
-Le but de cet exercice est de récupérer les données météo via l'API https://openweathermap.org et de l'afficher dans une page web.
 
-L'objectif principal de cet exercice est d'évaluer votre capacité à utiliser le PHP, JS, HTML, CSS. N'hésitez pas à ajouter des fonctionnalités sur la page qui affiche la météo ou à créer d'autre pages.
+### Installation
 
-Les "points à faire" correspondent à une base d'objectifs, ils ne sont pas obligatoires, et vous pouvez en faire d'autres si vous avez des idéees.
+*Prérequi sur votre machine pour le bon fonctionnement de ce projet : (Symfony version 4.3.2, ainsi que : Composer)
 
-Il n'y a pas de limitation sur les libraires utilisés.
+Les étapes pour installer le projet.
 
-### Informations utiles
+Après avoir cloné le projet avec ``https://github.com/DimitriKft/exo_sf.git``
 
-Afin de simplifier le développement, les composants suivants sont déjà présents :
+Executez la commande ``cd exo-sf`` pour vous rendre dans le dossier depuis le terminal.
 
-- Le template : situé dans `templates/weather/index.html.twig` doit afficher les données de la météo
-- Le controller : situé dans `src/Controller/WeatherController.php` doit récupérer les données et les passer au template
-- Le service : situé dans `src/Service/WeatherService.php` doit s'occuper de réaliser l'appel à l'API
+Ensuite, dans l'ordre taper les commandes : 
 
-L'ensemble du projet a été initialisé afin de vous faire gagner du temps.
+- 1 ``composer install`` afin d'installer toutes les dépendances du projet.
 
-La technologie utilisée est `symfony 4.3.2`
+- 5 Vous pouvez maintenant accéder à votre portfolio en vous connectant au serveur : ``symfony server:start`` ou ``php bin/console server:run``
 
-L'api utilisé pour récupérer la météo est `Open Weather`
 
-La fonction `dump` de symfony permet d'afficher des données lorsqu'on est en mode debug.
+## Démarrage
 
-### Installation du projet
+Une fois sur l'application, il ne vous reste plus qu'a rechercher une ville de votre choix dans le champ input à votre disposition, et de consulter vos résultats.
+Bonne visite ! 
 
-Installer PHP 7.2 ou supérieur
+## Fabriqué avec
 
-- sur debian utiliser ces instructions:
+Projet développé avec:
 
-> apt install apt-transport-https lsb-release ca-certificates
+* [Symfony](https://symfony.com/) - Framework PHP Symfony
+``symfony 4.3.2``
 
-> wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+* [Api OpenWeather](https://openweathermap.org/) - Api Météo / Weather
 
-> echo "deb https://packages.sury.org/php/ \$(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+## Versions
 
-> apt update
+**Version** ``0.0.1``
 
-> apt install php7.2
+## Auteurs
+* **Dimitri Klopfstein** _alias_ [@DimitriKft](https://github.com/DimitriKft)
 
-- sur ubuntu utiliser ces instructions:
 
-> apt-get install software-properties-common
-
-> add-apt-repository ppa:ondrej/php
-
-> apt update
-
-> apt install php7.2
-
-Installer composer: https://getcomposer.org/
-Clonner le repo git sur votre PC
-Lancer la commande `composer install`
-Se créer un compte sur le site `https://openweathermap.org/`, obtenir une clef d'API gratuite.
-Renseigner la clef dans la variabl d'environnement `WHEATHER_API_KEY` (suivre les instructions fournies dans le fichier `.env`)
-Lancer la commande `php bin/console server:run` pour lancer un serveur web qui écoute sur l'adresse `http://127.0.0.1:8000`
-La page qui affichera la météo est disponible à l'url `http://127.0.0.1:8000/weather`
-
-### Points à faire
-
-- [ ] Formater les données récupérées par le service afin que le tableau en retour renvoi de vraies valeurs
-- [ ] Passer les données au template via le controller
-- [ ] Mettre à jour le template pour afficher les données
-- [ ] Remonter la météo de toulouse en Occitanie
-- [ ] Gérer les erreurs de l'API via un bloc `try catch` dans le service
-- [ ] Ajouter un formulaire et des appels API pour permettre à l'utilisateur de choisir sa ville
-- [ ] Faire de la page qui affiche la météo la home page
-- [ ] Rendre la page qui affiche la météo responsive
