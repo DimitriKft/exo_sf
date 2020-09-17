@@ -1,163 +1,68 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-   Méteo Stratégia
+   Méteo Strategia
 {% endblock %}
 
 {% block body %}
-
-<div class="content">   
+  <div class="content">   
     <div class="blockText">
       <h1>{{ api.name }}</h1>
       <p class="temp">{{ api.main.temp }}°</p>
       <h2> {{ date }}</h2>
       {% if api.weather[0].description == "ciel dégagé" %}
-      <div class="icon sunny">
-        <div class="sun">
-          <div class="rays"></div>
-        </div>
-      </div>
-    {% elseif api.weather[0].description == "peu nuageux" %}
-      <div class="icon sunny">
-        <div class="sun">
-          <div class="rays"></div>
+        <div class="icon sunny">
+          <div class="sun">
+            <div class="rays"></div>
           </div>
-        <div class="cloud3"></div>
-      </div>
+        </div>
+      {% elseif api.weather[0].description == "peu nuageux" %}
+        <div class="icon sunny">
+          <div class="sun">
+            <div class="rays"></div>
+            </div>
+          <div class="cloud3"></div>
+        </div>
       {% elseif api.weather[0].description == "nuageux" or api.weather[0].description == "partiellement nuageux" %}
-      <div class="icon partly cloudy">
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="sun">
-          <div class="rays"></div>
+        <div class="icon partly cloudy">
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+          <div class="sun">
+            <div class="rays"></div>
+          </div>
         </div>
-      </div>
       {% elseif api.weather[0].description == "couvert" or api.weather[0].description == "brume" %}
-      <div class="icon cloudy">
-          <div class="cloud"></div>
-          <div class="cloud"></div>
-      </div>
-      {% elseif api.weather[0].description == "fumée" or api.weather[0].description == "brume sèche" %}
-      <div class="icon big rainy">
-          <div class="cloud"></div>
-          <div class="cloud"></div>
-          <div class="rainbig"></div>
-      </div>
-      {% elseif api.weather[0].description == "légère pluie"  or api.weather[0].description == "averses de pluie" or api.weather[0].description == "pluie modérée" %}
-      <div class="icon big rainy">
-        <div class="rain3"></div>
-      </div>
-      {% endif %}
-   
-      <p class="">{{  api.weather[0].description  |capitalize }}</p>
-
-      <div class="card-body">
-          <p class="card-text">Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de <b>{{ api.main.temp_min }}°</b> et la température maximal sera de <b>{{ api.main.temp_max }}°</b></p>
+        <div class="icon cloudy">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
         </div>
-
+      {% elseif api.weather[0].description == "fumée" or api.weather[0].description == "brume sèche" %}
+        <div class="icon big rainy">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="rainbig"></div>
+        </div>
+      {% elseif api.weather[0].description == "légère pluie"  or api.weather[0].description == "averses de pluie" or api.weather[0].description == "pluie modérée" or api.weather[0].description == "petites averses" %}
+        <div class="icon big rainy">
+          <div class="rain3"></div>
+        </div>
+      {% endif %}
+      <p class="">{{  api.weather[0].description  | capitalize }}</p>
+      <p>Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de <b>{{ api.main.temp_min }}°</b> et la température maximal sera de <b>{{ api.main.temp_max }}°</b></p>
       <ul class="list-group list-group-flush">
-          <li class="list-group-item">Pression : {{ api.main.pressure }}mb</li>
-          <hr>
-          <li class="list-group-item">Humidité : {{ api.main.humidity }}%</li>
-          <hr>
+          <li class="list-group-item">Pression atmosphérique : {{ api.main.pressure }} hPa</li>
+            <hr>
+          <li class="list-group-item">Humidité : {{ api.main.humidity }} %</li>
+            <hr>
           <li class="list-group-item">Vitess du vent : {{ api.wind.speed }} Km/h</li>
-        </ul>
- 
+      </ul>
       <form action={{ path('weather')}} method=post class="row">
           <input class="inputSearch"  id="search_city" name="search_city" type="search"  placeholder="Votre ville...">
-          <button class="btn_search" onClick="showPass()">
-            Rechercher
-          </button>
+          <button class="btn_search">Rechercher</button>
       </form> 
-    
 
-
-</div> 
-   
-    
-
-
-
-{#     
- 
-  </div> #}
-  
-
-{# <div class="container">
-
-    <div>
-        <a href="https://strategia.io/"><img src="{{ asset('image/origami.png') }}" alt=""></a>
-        <h1>Strategia Météo</h1>
-    </div>
-
-    <div class="forms form-group has-success justify-content-lg-center d-flex align-items-center  p-4 p-md-2 blockMain">
-        <form action={{ path('weather')}} method=post class="row">
-            <input class="form-control is-valid col-md-6 d-flex justify-content-center" id="search_city" name="search_city"type="search"  placeholder="Votre ville...">
-            <button class="btn btn-primary" type=submit >Rechercher</button>
-        </form>
-        <div class="card mb-3">
-          <h3 class="card-header">Détail météorologique</h3>
-          <div class="card-body">
-            <h5 class="card-title"><b>{{ api.name }}</b></h5>  
-
-
-            {% if api.weather[0].description == "ciel dégagé" %}
-              <div class="icon sunny">
-                <div class="sun">
-                  <div class="rays"></div>
-                </div>
-              </div>
-            {% elseif api.weather[0].description == "peu nuageux" %}
-              <div class="icon sunny">
-                <div class="sun">
-                  <div class="rays"></div>
-                  </div>
-                <div class="cloud3"></div>
-              </div>
-              {% elseif api.weather[0].description == "nuageux" or api.weather[0].description == "partiellement nuageux" %}
-              <div class="icon partly cloudy">
-                <div class="cloud"></div>
-                <div class="cloud"></div>
-                <div class="sun">
-                  <div class="rays"></div>
-                </div>
-              </div>
-              {% elseif api.weather[0].description == "couvert" or api.weather[0].description == "brume" %}
-              <div class="icon cloudy">
-                  <div class="cloud"></div>
-                  <div class="cloud"></div>
-              </div>
-              {% elseif api.weather[0].description == "fumée" or api.weather[0].description == "brume sèche" %}
-              <div class="icon big rainy">
-                  <div class="cloud"></div>
-                  <div class="cloud"></div>
-                  <div class="rainbig"></div>
-              </div>
-              {% elseif api.weather[0].description == "légère pluie"  or api.weather[0].description == "averses de pluie" %}
-              <div class="icon averses possibles">
-                  <div class="sun">
-                    <div class="rays"></div>
-                  </div>
-                  <div class="cloud4">
-                    <div class="rain3"></div>
-              </div>
-              {% endif %}
-
-
-            <h6 class="card-subtitle text-muted">{{ api.main.temp }}°</h6>
-            <h6>{{  api.weather[0].description  }}</h6>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de {{ api.main.temp_min }}° et la température maximal sera de {{ api.main.temp_max }}°</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Pression : {{ api.main.pressure }}mb</li>
-            <li class="list-group-item">Humidité : {{ api.main.humidity }}%</li>
-            <li class="list-group-item">Vitess du vent : {{ api.wind.speed }} Km/h</li>
-          </ul>
-        </div>
-    </div>    
-</div> #}
-
-
+      <footer>
+        <p>Créé par Dimitri Klopfstein, <a class="link" href="https://www.dimitri-klopfstein.com/">www.dimitri-klopfstein.com</a>, pour Strategia <a href="https://strategia.io/"><img src="{{ asset('image/ori.png') }}" alt=""></a></p>
+      </footer>
+  </div>
 {% endblock %}

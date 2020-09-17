@@ -19,14 +19,12 @@ class WeatherController extends AbstractController
         $this->weatherService = $weather;
     }
 
-
-
     /**
-     * @Route("/", name="weather")
-     */
+    * @Route("/", name="weather")
+    */
     public function index(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
-        $api = $weather->getApi( $request);
+        $api  = $weather->getApi( $request);
         $date = date("d/m/Y");
         return $this->render('weather/index.html.twig',[ 
             'api' => $api,
@@ -34,17 +32,13 @@ class WeatherController extends AbstractController
         ]);
     }
 
-        /**
-     * @Route("/error", name="weathErerror")
-     */
+    /**
+    * @Route("/error", name="weathErerror")
+    */
     public function error(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
-        $api = $weather->getApi( $request);
-        $date = date("Y/m/d");
-        return $this->render('weather/error.html.twig',[ 
-            'api' => 'test',
-    
-        ]);
+        $api  = $weather->getApi( $request);
+        return $this->render('weather/error.html.twig');
     }
 
     
