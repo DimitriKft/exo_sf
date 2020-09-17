@@ -6,14 +6,7 @@
 
 {% block body %}
 
-<div class="content">
-
- 
- 
-
-
-
-    
+<div class="content">   
     <div class="blockText">
       <h1>{{ api.name }}</h1>
       <p class="temp">{{ api.main.temp }}°</p>
@@ -58,6 +51,10 @@
    
       <p class="">{{  api.weather[0].description  |capitalize }}</p>
 
+      <div class="card-body">
+          <p class="card-text">Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de <b>{{ api.main.temp_min }}°</b> et la température maximal sera de <b>{{ api.main.temp_max }}°</b></p>
+        </div>
+
       <ul class="list-group list-group-flush">
           <li class="list-group-item">Pression : {{ api.main.pressure }}mb</li>
           <hr>
@@ -65,27 +62,13 @@
           <hr>
           <li class="list-group-item">Vitess du vent : {{ api.wind.speed }} Km/h</li>
         </ul>
-
-{# 
+ 
       <form action={{ path('weather')}} method=post class="row">
           <input class="inputSearch"  id="search_city" name="search_city" type="search"  placeholder="Votre ville...">
-          <button class="view-pass" onClick="showPass()">
-            <img src="{{ asset('image/search.png') }}" alt="">
+          <button class="btn_search" onClick="showPass()">
+            Rechercher
           </button>
-      </form> #}
-   
-
-      <form action={{ path('weather')}} method=post>
-          <div class="search-bar">
-              <input class="inputSearch"  id="search_city" name="search_city" type="text" required placeholder="Votre ville...">
-              <div class="search-icon"></div>
-            </div>
-      
-          {# <button class="view-pass" onClick="showPass()">
-            <img src="{{ asset('image/search.png') }}" alt="">
-          </button> #}
-      </form>
-
+      </form> 
     
 
 
