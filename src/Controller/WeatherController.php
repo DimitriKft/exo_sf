@@ -27,8 +27,10 @@ class WeatherController extends AbstractController
     public function index(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
         $api = $weather->getApi( $request);
+        $date = date("d/m/Y");
         return $this->render('weather/index.html.twig',[ 
             'api' => $api,
+            'date' => $date
         ]);
     }
 
@@ -38,8 +40,10 @@ class WeatherController extends AbstractController
     public function error(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
         $api = $weather->getApi( $request);
+        $date = date("Y/m/d");
         return $this->render('weather/error.html.twig',[ 
-            'api' => 'test'
+            'api' => 'test',
+    
         ]);
     }
 

@@ -5,7 +5,102 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
+
+<div class="content">
+
+ 
+ 
+
+
+
+    
+    <div class="blockText">
+      <h1>{{ api.name }}</h1>
+      <p class="temp">{{ api.main.temp }}°</p>
+      <h2> {{ date }}</h2>
+      {% if api.weather[0].description == "ciel dégagé" %}
+      <div class="icon sunny">
+        <div class="sun">
+          <div class="rays"></div>
+        </div>
+      </div>
+    {% elseif api.weather[0].description == "peu nuageux" %}
+      <div class="icon sunny">
+        <div class="sun">
+          <div class="rays"></div>
+          </div>
+        <div class="cloud3"></div>
+      </div>
+      {% elseif api.weather[0].description == "nuageux" or api.weather[0].description == "partiellement nuageux" %}
+      <div class="icon partly cloudy">
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="sun">
+          <div class="rays"></div>
+        </div>
+      </div>
+      {% elseif api.weather[0].description == "couvert" or api.weather[0].description == "brume" %}
+      <div class="icon cloudy">
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+      </div>
+      {% elseif api.weather[0].description == "fumée" or api.weather[0].description == "brume sèche" %}
+      <div class="icon big rainy">
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+          <div class="rainbig"></div>
+      </div>
+      {% elseif api.weather[0].description == "légère pluie"  or api.weather[0].description == "averses de pluie" or api.weather[0].description == "pluie modérée" %}
+      <div class="icon big rainy">
+        <div class="rain3"></div>
+      </div>
+      {% endif %}
+   
+      <p class="">{{  api.weather[0].description  |capitalize }}</p>
+
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">Pression : {{ api.main.pressure }}mb</li>
+          <hr>
+          <li class="list-group-item">Humidité : {{ api.main.humidity }}%</li>
+          <hr>
+          <li class="list-group-item">Vitess du vent : {{ api.wind.speed }} Km/h</li>
+        </ul>
+
+{# 
+      <form action={{ path('weather')}} method=post class="row">
+          <input class="inputSearch"  id="search_city" name="search_city" type="search"  placeholder="Votre ville...">
+          <button class="view-pass" onClick="showPass()">
+            <img src="{{ asset('image/search.png') }}" alt="">
+          </button>
+      </form> #}
+   
+
+      <form action={{ path('weather')}} method=post>
+          <div class="search-bar">
+              <input class="inputSearch"  id="search_city" name="search_city" type="text" required placeholder="Votre ville...">
+              <div class="search-icon"></div>
+            </div>
+      
+          {# <button class="view-pass" onClick="showPass()">
+            <img src="{{ asset('image/search.png') }}" alt="">
+          </button> #}
+      </form>
+
+    
+
+
+</div> 
+   
+    
+
+
+
+{#     
+ 
+  </div> #}
+  
+
+{# <div class="container">
 
     <div>
         <a href="https://strategia.io/"><img src="{{ asset('image/origami.png') }}" alt=""></a>
@@ -55,7 +150,7 @@
                   <div class="cloud"></div>
                   <div class="rainbig"></div>
               </div>
-              {% elseif api.weather[0].description == "légère pluie" %}
+              {% elseif api.weather[0].description == "légère pluie"  or api.weather[0].description == "averses de pluie" %}
               <div class="icon averses possibles">
                   <div class="sun">
                     <div class="rays"></div>
@@ -79,9 +174,7 @@
           </ul>
         </div>
     </div>    
-</div>
-
-
+</div> #}
 
 
 {% endblock %}
