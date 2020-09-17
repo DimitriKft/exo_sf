@@ -17,7 +17,7 @@ Ensuite, dans l'ordre taper les commandes :
 
 - 1 ``composer install`` afin d'installer toutes les dépendances du projet.
 
-- 5 Vous pouvez maintenant accéder à votre portfolio en vous connectant au serveur : ``symfony server:start`` ou ``php bin/console server:run``
+- 2 Vous pouvez maintenant accéder à votre portfolio en vous connectant au serveur : ``symfony server:start`` ou ``php bin/console server:run``
 
 
 ## Démarrage
