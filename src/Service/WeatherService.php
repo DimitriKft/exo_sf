@@ -38,7 +38,7 @@ class WeatherService
         {
             if (200 !== $response->getStatusCode()) 
             {
-                header('Location: http://localhost:8000/error');
+                header('Location: https://intense-castle-90546.herokuapp.com/error');
                 die(); 
             }
         }
