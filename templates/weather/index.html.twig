@@ -48,7 +48,7 @@
         </div>
       {% endif %}
       <p class="">{{  api.weather[0].description  | capitalize }}</p>
-      <p>Aujourd'huis à <b>{{ api.name }}</b>, la température minmal sera de <b>{{ api.main.temp_min }}°</b> et la température maximal sera de <b>{{ api.main.temp_max }}°</b></p>
+      <p>Aujourd'huis à <b>{{ api.name }}</b>, la température minimal sera de <b>{{ api.main.temp_min }}°</b> et la température maximal sera de <b>{{ api.main.temp_max }}°</b></p>
       <ul class="list-group list-group-flush">
           <li class="list-group-item">Pression atmosphérique : {{ api.main.pressure }} hPa</li>
             <hr>
