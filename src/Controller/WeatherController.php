@@ -25,7 +25,7 @@ class WeatherController extends AbstractController
     public function index(WeatherService $weather, Request $request, DecoderInterface $decode)
     {
         $api  = $weather->getApi( $request);
-        $date = date("d/m/Y");
+        $date = date("d/m/Y H:i");
         return $this->render('weather/index.html.twig',[ 
             'api' => $api,
             'date' => $date

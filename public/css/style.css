@@ -32,11 +32,10 @@ body
   box-shadow:2px 2px 5px; 
   font-size: 20px;
   background: #fff;
-  padding: 10px 20px;
-
-  
+  padding: 10px 20px;  
 }
 
+/*Texte H1,H2, P ect...*/
 h1, h2, p, li
 {
   color: #ffffff;
@@ -66,7 +65,6 @@ li
   list-style: none;
 }
 
-/*Texte H1,H2, P ect...*/
 .blockText
 {
   display: flex;
@@ -100,6 +98,10 @@ li
     flex-direction: column;
   }
 
+  footer
+  {
+    font-size: 10px;
+  }
   
 }
 
