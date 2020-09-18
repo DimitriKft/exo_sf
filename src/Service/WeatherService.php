@@ -38,7 +38,7 @@ class WeatherService
         {
             if (200 !== $response->getStatusCode()) 
             {
-                header('Location: https://intense-castle-90546.herokuapp.com/error');
+                header("Location: {$_SERVER['HTTP_REFERER']}");
                 die(); 
             }
         }
